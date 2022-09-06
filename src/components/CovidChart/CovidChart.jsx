@@ -12,16 +12,14 @@ const CovidChart = () => {
 
 
    useEffect(() => {
-    const fetchAPI = async() => {
-      setDailyData( await fetchDailyData());
-    }
-
-
-    //console.log('dailyData in chart', dailyData);
-
-    fetchAPI();
-   });
-
+      const fetchAPI = async () => {
+        const initialDailyData = await fetchDailyData();
+  
+        setDailyData(initialDailyData);
+      };
+  
+      fetchAPI();
+    }, []);
 
    const lineChart = (
       dailyData.length
