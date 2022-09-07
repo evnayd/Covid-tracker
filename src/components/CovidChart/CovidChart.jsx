@@ -51,7 +51,7 @@ const barChart = (
          data = {{
             labels: ['Infected', 'Recovered', 'Deaths'],
             datasets: [ {
-               label: 'People',
+               label:  `Current state in ${country}`,
                backgroundColor: [
                   'rgba(0, 0, 255, 0.5)',
                   'rgba(0, 255, 0, 0.5)',
@@ -62,7 +62,6 @@ const barChart = (
          }}
          options = {{
             legend: {display: false},
-            title: {display: true, text: `Current state in ${country}`}
          }}
          />
       ) : null
