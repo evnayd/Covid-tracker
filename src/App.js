@@ -27,6 +27,7 @@ handleCountryChange = async (country) => {
 
   return (
     <div className={styles.container}>
+      <h1>Daily Covid Statistics</h1>
       <Cards data={data}/>
       <CountryPicker handleCountryChange={this.handleCountryChange}/>
       <CovidChart data={data} country={country}/>   
