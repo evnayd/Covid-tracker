@@ -7,7 +7,7 @@ import styles from './Chart.module.css';
 
 Chart.register(...registerables);
 
-const CovidChart = () => {
+const CovidChart = ({data: {confirmed, deaths, recovered}, country}) => {
    const [dailyData, setDailyData] = useState([]);
 
 
@@ -19,7 +19,7 @@ const CovidChart = () => {
       };
   
       fetchAPI();
-    }, []);
+    }, []); 
 
    const lineChart = (
       dailyData.length
@@ -45,9 +45,32 @@ const CovidChart = () => {
    );
 
 
+const barChart = (
+      confirmed ? (
+         <Bar
+         data = {{
+            labels: ['Infected', 'Recovered', 'Deaths'],
+            datasets: [ {
+               label: 'People',
+               backgroundColor: [
+                  'rgba(0, 0, 255, 0.5)',
+                  'rgba(0, 255, 0, 0.5)',
+                  'rgba(255, 0, 0 0.5)',
+               ],
+               data: [confirmed.value, recovered.value, deaths.value]
+            }]
+         }}
+         options = {{
+            legend: {display: false},
+            title: {display: true, text: `Current state in ${country}`}
+         }}
+         />
+      ) : null
+   )
+
      return (
        <div className={styles.container}>
-         {lineChart}
+         {country? barChart : lineChart}
        </div>
      )
 }

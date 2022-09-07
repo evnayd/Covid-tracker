@@ -29,7 +29,7 @@ handleCountryChange = async (country) => {
     <div className={styles.container}>
       <Cards data={data}/>
       <CountryPicker handleCountryChange={this.handleCountryChange}/>
-      <CovidChart/>   
+      <CovidChart data={data} country={country}/>   
     </div>
   );
 }
